@@ -1,9 +1,10 @@
-import "dotenv/config";
-import "reflect-metadata";
 import { DataSource, DataSourceOptions } from "typeorm";
 import path from "path";
+import "dotenv/config";
 
-const dataSourceConfig = (): DataSourceOptions => {
+// import "reflect-metadata";
+
+const DataSourceConfig = (): DataSourceOptions => {
     const entitiesPath: string = path.join(__dirname, "./entities/**.{ts,js}");
 
     const migrationsPath: string = path.join(
@@ -38,6 +39,6 @@ const dataSourceConfig = (): DataSourceOptions => {
     };
 };
 
-const AppDataSource = new DataSource(dataSourceConfig());
+const AppDataSource: DataSource = new DataSource(DataSourceConfig());
 
 export { AppDataSource };
