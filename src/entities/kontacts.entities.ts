@@ -18,9 +18,6 @@ class Kontact {
     @Column({ length: 100, unique: true })
     email: string;
 
-    @Column({ length: 120 })
-    password: string;
-
     @Column({ length: 20 })
     phoneNumber: string;
 
