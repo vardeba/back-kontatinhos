@@ -24,7 +24,7 @@ class Kontact {
     @CreateDateColumn({ type: "date" })
     createdAt: Date | string;
 
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, (user) => user.kontacts, { onDelete: "CASCADE" })
     user: User;
 }
 
