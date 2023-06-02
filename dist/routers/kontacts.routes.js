@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.kontactsRoutes = void 0;
+const express_1 = require("express");
+const kontacts_controller_1 = require("../controllers/kontacts.controller");
+const ensureAuth_middleware_1 = require("../middlewares/ensureAuth.middleware");
+const ensureDataIsValid_middleware_1 = require("../middlewares/ensureDataIsValid.middleware");
+const kontacts_schemas_1 = require("../schemas/kontacts.schemas");
+const ensureIsOwner_middleware_1 = require("../middlewares/ensureIsOwner.middleware");
+const kontactsRoutes = (0, express_1.Router)();
+exports.kontactsRoutes = kontactsRoutes;
+kontactsRoutes.use(ensureAuth_middleware_1.ensureAuthMiddleware);
+kontactsRoutes.post("", (0, ensureDataIsValid_middleware_1.ensureDataIsValidMiddleware)(kontacts_schemas_1.kontactSchemaRequest), kontacts_controller_1.createKontactController);
+kontactsRoutes.get("", kontacts_controller_1.listKontactController);
+kontactsRoutes.get("/:id", kontacts_controller_1.retrieveKontactController);
+kontactsRoutes.patch("/:id", ensureIsOwner_middleware_1.ensureIsOwnerMiddleware, (0, ensureDataIsValid_middleware_1.ensureDataIsValidMiddleware)(kontacts_schemas_1.kontactSchemaUpdate), kontacts_controller_1.updateKontactController);
+kontactsRoutes.delete("/:id", ensureIsOwner_middleware_1.ensureIsOwnerMiddleware, kontacts_controller_1.deleteKontactController);
