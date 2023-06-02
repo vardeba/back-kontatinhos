@@ -7,7 +7,7 @@ import { handleErrors } from "./errors";
 import { loginRoutes } from "./routers/login.routes";
 import { kontactsRoutes } from "./routers/kontacts.routes";
 
-export const app: Application = express();
+export const app = express();
 
 app.use(cors());
 
