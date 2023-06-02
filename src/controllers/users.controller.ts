@@ -31,7 +31,7 @@ const updateUserController = async (req: Request, res: Response) => {
 
     const newUserData = await updateUserService(req.body, userId);
 
-    return res.status(201).json(newUserData);
+    return res.json(newUserData);
 };
 
 const deleteUserController = async (req: Request, res: Response) => {

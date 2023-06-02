@@ -4,6 +4,7 @@ import { listKontactsService } from "../services/kontacts/listKontacts.service";
 import { TKontactUpdateRequest } from "../interfaces/kontacts.interfaces";
 import { updateKontactService } from "../services/kontacts/updateKontact.service";
 import { deleteKontactService } from "../services/kontacts/deleteKontact.service";
+import { retrieveKontactService } from "../services/kontacts/retrieveKontact.service";
 
 const createKontactController = async (req: Request, res: Response) => {
     const userId = res.locals.userId;
@@ -16,9 +17,18 @@ const createKontactController = async (req: Request, res: Response) => {
 const listKontactController = async (req: Request, res: Response) => {
     const userId = res.locals.userId;
 
-    const tasks = await listKontactsService(userId);
+    const kontacts = await listKontactsService(userId);
 
-    return res.json(tasks);
+    return res.json(kontacts);
+};
+
+const retrieveKontactController = async (req: Request, res: Response) => {
+    const kontactId = req.params.id;
+    console.log(kontactId);
+
+    const kontact = await retrieveKontactService(kontactId);
+
+    return res.json(kontact);
 };
 
 const updateKontactController = async (req: Request, res: Response) => {
@@ -26,9 +36,9 @@ const updateKontactController = async (req: Request, res: Response) => {
 
     const updatedValues: TKontactUpdateRequest = req.body;
 
-    const updatedTask = await updateKontactService(updatedValues, kontactId);
+    const updatedKontact = await updateKontactService(updatedValues, kontactId);
 
-    return res.json(updatedTask);
+    return res.json(updatedKontact);
 };
 
 const deleteKontactController = async (req: Request, res: Response) => {
@@ -42,6 +52,7 @@ const deleteKontactController = async (req: Request, res: Response) => {
 export {
     createKontactController,
     listKontactController,
+    retrieveKontactController,
     updateKontactController,
     deleteKontactController,
 };
