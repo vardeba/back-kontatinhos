@@ -34,6 +34,12 @@ $ npm install
 $ npm run typeorm migration:run -- -d ./src/data-source.ts
 ```
 
+## Rodando a a aplicação
+
+```bash
+$ npm run dev
+```
+
 #
 
 #
