@@ -24,6 +24,9 @@ class User {
     @Column({ length: 20 })
     phoneNumber: string;
 
+    @Column({ length: 255, nullable: true })
+    userImage: string;
+
     @CreateDateColumn({ type: "date" })
     createdAt: Date | string;
 

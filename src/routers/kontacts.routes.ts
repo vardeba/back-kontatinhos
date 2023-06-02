@@ -3,6 +3,7 @@ import {
     createKontactController,
     deleteKontactController,
     listKontactController,
+    retrieveKontactController,
     updateKontactController,
 } from "../controllers/kontacts.controller";
 import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware";
@@ -22,13 +23,18 @@ kontactsRoutes.post(
     ensureDataIsValidMiddleware(kontactSchemaRequest),
     createKontactController
 );
+
 kontactsRoutes.get("", listKontactController);
+
+kontactsRoutes.get("/:id", retrieveKontactController);
+
 kontactsRoutes.patch(
     "/:id",
     ensureIsOwnerMiddleware,
     ensureDataIsValidMiddleware(kontactSchemaUpdate),
     updateKontactController
 );
+
 kontactsRoutes.delete("/:id", ensureIsOwnerMiddleware, deleteKontactController);
 
 export { kontactsRoutes };

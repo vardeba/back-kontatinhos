@@ -21,6 +21,9 @@ class Kontact {
     @Column({ length: 20 })
     phoneNumber: string;
 
+    @Column({ length: 255, nullable: true })
+    kontactImage: string;
+
     @CreateDateColumn({ type: "date" })
     createdAt: Date | string;
 
