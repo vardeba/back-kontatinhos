@@ -48,6 +48,10 @@ $ npm run dev
 
 # URL Base: http://localhost:3000
 
+#### Caso deseje rodar o frontend no mesmo PC, informe um valor diferente de 3000 na chave PORT do arquivo .env.
+
+Caso queira testar a aplicação, existe uma pasta Insomnia com o arquivo "kontatinhos.json", que precisa ser importado na aplicação Insomnia, contendo rotas de login, CRUD de usuários e CRUD de kontatinhos.
+
 #
 
 #
